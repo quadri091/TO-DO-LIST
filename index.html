@@ -120,16 +120,25 @@
     }
   }
 
+  function edit(index) {
+    let Prompt = prompt("Make a change", array[index]);
+    if (Prompt) {
+      let newPrompt = Prompt[0].toUpperCase() + Prompt.slice(1).toLowerCase();
+      array[index] = newPrompt;
+    }
+    display();
+  }
+
   function display() {
     result.innerHTML = "";
-    for (let int = 0; int < array.length; int++) {
+    for (let index = 0; index < array.length; index++) {
       result.innerHTML += `<p>
           <span id="left">
-          <b>${int + 1}.</b> ${array[int]}
+          <b>${index + 1}.</b> ${array[index]}
           </span>
         <span id="right">
-          <button class="btn btn-warning px-3" onclick="edit()">Edit</button>
-          <button class="btn btn-danger px-4" onclick="remove(${int})">Delete</button>
+          <button class="btn btn-warning px-3" onclick="edit(${index})">Edit</button>
+          <button class="btn btn-danger px-4" onclick="remove(${index})">Delete</button>
         </span>
           </p>`;
     }
