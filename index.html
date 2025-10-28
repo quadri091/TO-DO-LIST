@@ -66,6 +66,9 @@
         .cont {
           width: 100%;
         }
+        body {
+          padding: 0px 7%;
+        }
       }
     </style>
   </head>
@@ -99,18 +102,7 @@
       value = value[0].toUpperCase() + value.slice(1).toLowerCase();
       array.push(value);
       console.log(array);
-      result.innerHTML = "";
-      for (let index = 0; index < array.length; index++) {
-        result.innerHTML += `<p id="parent"> 
-        <span id="left">
-        <b>${index + 1}.</b> ${array[index]} 
-        </span>
-      <span id="right">
-        <button class="btn btn-warning px-3" onclick="edit()">Edit</button>
-        <button class="btn btn-danger px-4" onclick="remove(${index})">Delete</button>
-      </span>
-        </p>`;
-      }
+      display();
     }
 
     input.value = "";
@@ -121,9 +113,17 @@
     let Confirm = confirm("Are u sure u want to delete");
     if (Confirm) {
       console.log(array);
-      result.innerHTML = "";
-      for (let int = 0; int < array.length; int++) {
-        result.innerHTML += `<p>
+      display();
+      alert("Data deleted successfully");
+    } else {
+      alert("Your data has been restored");
+    }
+  }
+
+  function display() {
+    result.innerHTML = "";
+    for (let int = 0; int < array.length; int++) {
+      result.innerHTML += `<p>
           <span id="left">
           <b>${int + 1}.</b> ${array[int]}
           </span>
@@ -132,10 +132,6 @@
           <button class="btn btn-danger px-4" onclick="remove(${int})">Delete</button>
         </span>
           </p>`;
-      }
-      alert("Data deleted successfully");
-    } else {
-      alert("Your data has been restored");
     }
   }
 </script>
