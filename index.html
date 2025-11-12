@@ -92,7 +92,7 @@
   let result = document.getElementById("result");
   let first = document.getElementById("first");
   let second = document.getElementById("second");
-  let array = [];
+  let array = JSON.parse(localStorage.getItem("storage")) || [];
 
   function add() {
     let value = input.value.trim();
@@ -101,13 +101,14 @@
     } else {
       value = value[0].toUpperCase() + value.slice(1).toLowerCase();
       array.push(value);
+      localStorage.setItem("storage", JSON.stringify(array));
       console.log(array);
       display();
     }
 
     input.value = "";
   }
-
+  display();
   function remove(index) {
     array.splice(index, 1);
     let Confirm = confirm("Are u sure u want to delete");
@@ -134,6 +135,7 @@
 
   function display() {
     result.innerHTML = "";
+    localStorage.setItem("storage", JSON.stringify(array));
     for (let index = 0; index < array.length; index++) {
       result.innerHTML += `<p>
           <span id="left">
