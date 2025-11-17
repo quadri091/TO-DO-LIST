@@ -123,8 +123,7 @@
 
   function edit(index) {
     let Prompt = prompt("Make a change", array[index]);
-    let newPrompt =
-      Prompt[0].toUpperCase().trim() + Prompt.slice(1).toLowerCase().trim();
+    let newPrompt = Prompt[0].toUpperCase() + Prompt.slice(1).toLowerCase();
     if (Prompt.trim()) {
       array[index] = newPrompt;
     } else {
