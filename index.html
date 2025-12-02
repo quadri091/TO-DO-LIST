@@ -110,15 +110,15 @@
   }
   display();
   function remove(index) {
-    array.splice(index, 1);
     let Confirm = confirm("Are u sure u want to delete");
     if (Confirm) {
-      console.log(array);
-      display();
+      array.splice(index, 1);
       alert("Data deleted successfully");
     } else {
       alert("Your data has been restored");
     }
+
+    display();
   }
 
   function edit(index) {
